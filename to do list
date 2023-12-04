@@ -1,0 +1,55 @@
+class ListManager:
+    def __init__(self):
+        self.my_list = []
+
+    def display_list(self):
+        if not self.my_list:
+            print("The list is empty.")
+        else:
+            print("Current List:", self.my_list)
+
+    def add_to_list(self, item):
+        self.my_list.append(item)
+        print(f"{item} added to the list.")
+        self.display_list()
+
+    def update_list(self, old_item, new_item):
+        if old_item in self.my_list:
+            index = self.my_list.index(old_item)
+            self.my_list[index] = new_item
+            print(f"{old_item} updated to {new_item}.")
+            self.display_list()
+        else:
+            print(f"{old_item} not found in the list.")
+
+    def track_list(self):
+        while True:
+            print("\nList Operations:")
+            print("1. Display List")
+            print("2. Add to List")
+            print("3. Update List")
+            print("4. Exit")
+
+            choice = input("Enter your choice (1-4): ")
+
+            if choice == '1':
+                self.display_list()
+            elif choice == '2':
+                item = input("Enter the item to add: ")
+                self.add_to_list(item)
+            elif choice == '3':
+                old_item = input("Enter the item to update: ")
+                new_item = input("Enter the new item: ")
+                self.update_list(old_item, new_item)
+            elif choice == '4':
+                print("Exiting the program. Goodbye!")
+                break
+            else:
+                print("Invalid choice. Please enter a number between 1 and 4.")
+
+def main():
+    list_manager = ListManager()
+    list_manager.track_list()
+
+if __name__ == "__main__":
+    main()
